@@ -78,7 +78,7 @@ mkdir "TMP"
 
 %CURL% -# -k -L %FF-ESR-NEXT% -o TMP\FirefoxSetup_%VERSION%esr.exe
 :: certUtil -hashfile TMP\FirefoxSetup_%VERSION%esr.exe SHA256 | findstr ^[0-9a-f]$ > TMP\FirefoxSetup_%VERSION%esr.sha256
-%SZIP% x -aoa TMP\FirefoxSetup_%VERSION%esr.exe -o"App\" "core\"
+%SZIP% x -aoa TMP\FirefoxSetup_%VERSION%esr.exe -o"App\" "core\" > NUL
 
 if exist "App\FFox" rmdir "App\FFox" /s /q
 rename App\core FFox
