@@ -5,6 +5,7 @@
 !App/
 App/*
 !App/AppInfo/
+!App/DefaultData/
 !.editorconfig
 !.gitignore
 !FFox.ini
