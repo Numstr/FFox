@@ -1,3 +1,7 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+/* Hide Giant Thumbnail and Favicon */
+*|div#editBookmarkPanelImage,
+*|div#editBookmarkPanelFaviconContainer
+
 {display: none !important;}
