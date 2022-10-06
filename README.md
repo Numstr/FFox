@@ -1,6 +1,7 @@
 # FFox
 
-[Firefox](https://www.mozilla.org/firefox/all) Portable based on [PortableApps Launcher](https://portableapps.com/apps/development/portableapps.com_launcher), with a batch file for easy install / upgrade.
+[Firefox](https://www.mozilla.org/firefox/all) Portable based on [PortableApps Launcher](https://portableapps.com/apps/development/portableapps.com_launcher), with a batch file for easy install / upgrade. <br> 
+Also include some tweaks from [User.js](https://github.com/arkenfox/user.js)
 
 ## FFox.ini
 
