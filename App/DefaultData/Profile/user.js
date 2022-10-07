@@ -9,6 +9,8 @@ user_pref("full-screen-api.transition-duration.leave", 0 0);
 
 user_pref("browser.compactmode.show", true);
 
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); // [FF68+] allow userChrome/userContent
+
   ////////// GENERAL
 
     ////////// STARTUP
@@ -21,7 +23,7 @@ user_pref("browser.compactmode.show", true);
     ////////// TABS
 
     user_pref("browser.link.open_newwindow", 3);
-
+    user_pref("browser.tabs.warnOnClose", false); 
     user_pref("privacy.userContext.enabled", true);
     user_pref("privacy.userContext.ui.enabled", true);
 
@@ -43,7 +45,7 @@ user_pref("browser.compactmode.show", true);
 
     ////////// DRM
 
-    user_pref("media.eme.enabled", true);
+    user_pref("media.eme.enabled", false);
 
     //////////
 
@@ -98,6 +100,24 @@ user_pref("browser.compactmode.show", true);
 
   ////////// PRIVACY
 
+    ///////// ENHANCED TRACKING PROTECTION
+
+    user_pref("browser.contentblocking.category", "custom");
+
+    user_pref("network.cookie.cookieBehavior", 1);
+    user_pref("privacy.trackingprotection.enabled", true);
+    user_pref("privacy.trackingprotection.socialtracking.enabled", true);
+    user_pref("privacy.trackingprotection.cryptomining.enabled", true);
+    user_pref("privacy.trackingprotection.fingerprinting.enabled", true);
+
+    ///////// 
+
+    ///////// COOKIES AND SITE DATA
+
+    user_pref("network.cookie.lifetimePolicy", 2);
+
+    //////////
+
     ////////// LOGINS AND PASSWORDS
 
     user_pref("signon.rememberSignons", false);
@@ -110,6 +130,22 @@ user_pref("browser.compactmode.show", true);
     user_pref("extensions.formautofill.creditCards.available", false);
     user_pref("extensions.formautofill.creditCards.enabled", false);
     user_pref("extensions.formautofill.heuristics.enabled", false);
+
+    //////////
+
+    ////////// HISTORY
+
+    user_pref("browser.formfill.enable", false);
+    user_pref("privacy.sanitize.sanitizeOnShutdown", true);
+    user_pref("privacy.sanitize.timeSpan", 0);
+
+    user_pref("privacy.clearOnShutdown.cache", true);
+    user_pref("privacy.clearOnShutdown.downloads", false);
+    user_pref("privacy.clearOnShutdown.formdata", true);
+    user_pref("privacy.clearOnShutdown.history", false);
+    user_pref("privacy.clearOnShutdown.sessions", false);
+    user_pref("privacy.clearOnShutdown.offlineApps", false);
+    user_pref("privacy.clearOnShutdown.cookies", false);
 
     //////////
 
@@ -171,5 +207,3 @@ user_pref("browser.compactmode.show", true);
   //////////
 
 //////////
-
-user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); // [FF68+] allow userChrome/userContent
