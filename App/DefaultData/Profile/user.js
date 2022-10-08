@@ -23,7 +23,7 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); // [FF68
     ////////// TABS
 
     user_pref("browser.link.open_newwindow", 3);
-    user_pref("browser.tabs.warnOnClose", false); 
+    user_pref("browser.tabs.warnOnClose", false);
     user_pref("privacy.userContext.enabled", true);
     user_pref("privacy.userContext.ui.enabled", true);
 
@@ -110,7 +110,7 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); // [FF68
     user_pref("privacy.trackingprotection.cryptomining.enabled", true);
     user_pref("privacy.trackingprotection.fingerprinting.enabled", true);
 
-    ///////// 
+    /////////
 
     ///////// COOKIES AND SITE DATA
 
@@ -207,3 +207,37 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); // [FF68
   //////////
 
 //////////
+
+
+/*** arkenfox/user.js ***/
+/*** https://raw.githubusercontent.com/arkenfox/user.js/master/user.js ***/
+
+/* 0320: disable recommendation pane in about:addons (uses Google Analytics) ***/
+user_pref("extensions.getAddons.showPane", false); // [HIDDEN PREF]
+
+/* 0321: disable recommendations in about:addons' Extensions and Themes panes [FF68+] ***/
+user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
+
+/* 4501: enable privacy.resistFingerprinting [FF41+]
+ * [SETUP-WEB] RFP can cause some website breakage: mainly canvas, use a site exception via the urlbar
+ * RFP also has a few side effects: mainly timezone is UTC0, and websites will prefer light theme
+ * [1] https://bugzilla.mozilla.org/418986 ***/
+user_pref("privacy.resistFingerprinting", true);
+
+/* 4507: disable showing about:blank as soon as possible during startup [FF60+]
+ * When default true this no longer masks the RFP chrome resizing activity
+ * [1] https://bugzilla.mozilla.org/1448423 ***/
+user_pref("browser.startup.blankWindow", false);
+
+/* 4520: disable WebGL (Web Graphics Library)
+ * [SETUP-WEB] If you need it then override it. RFP still randomizes canvas for naive scripts ***/
+user_pref("webgl.disabled", true);
+
+/* 7014: disable System Add-on updates
+ * [WHY] It can compromise security. System addons ship with prefs, use those ***/
+user_pref("extensions.systemAddon.update.enabled", false); // [FF62+]
+user_pref("extensions.systemAddon.update.url", ""); // [FF44+]
+
+user_pref("browser.search.update", false); // disable search engine updates (e.g. OpenSearch)
+user_pref("extensions.update.enabled", false); // disable extension and theme update checks
+user_pref("extensions.update.autoUpdateDefault", false); // disable installing extension and theme updates
