@@ -9,7 +9,7 @@ set BUSYBOX="%HERE%App\Utils\busybox.exe"
 set CURL="%HERE%App\Utils\curl.exe"
 set SZIP="%HERE%App\Utils\7za.exe"
 
-:::::: NETWORK
+:::::: NETWORK CHECK
 
 %CURL% -is www.google.com | %BUSYBOX% grep -q "200 OK"
 
@@ -48,7 +48,7 @@ set FF-RELEASE="https://download.mozilla.org/?product=firefox-latest-ssl&os=%FFA
 
 ::::::::::::::::::::
 
-:::::: VERSION
+:::::: VERSION CHECK
 
 %CURL% -s -I -k %FF-ESR-NEXT% | %BUSYBOX% grep -o releases/[0-9.]\+[0-9] | %BUSYBOX% cut -d "/" -f2 > version.txt
 
@@ -61,7 +61,7 @@ if exist "version.txt" del "version.txt" > NUL
 
 ::::::::::::::::::::
 
-:::::: RUNNING PROCESS
+:::::: RUNNING PROCESS CHECK
 
 for /f %%F in ('tasklist /NH /FI "IMAGENAME eq firefox.exe"') do if %%F == firefox.exe (
   echo Close Firefox To Update
@@ -71,21 +71,29 @@ for /f %%F in ('tasklist /NH /FI "IMAGENAME eq firefox.exe"') do if %%F == firef
 
 ::::::::::::::::::::
 
-::::::
+:::::: GET LATEST VERSION
 
 if exist "TMP" rmdir "TMP" /s /q
 mkdir "TMP"
 
 %CURL% -# -k -L %FF-ESR-NEXT% -o TMP\FirefoxSetup_%VERSION%esr.exe
 :: certUtil -hashfile TMP\FirefoxSetup_%VERSION%esr.exe SHA256 | findstr ^[0-9a-f]$ > TMP\FirefoxSetup_%VERSION%esr.sha256
-%SZIP% x -aoa TMP\FirefoxSetup_%VERSION%esr.exe -o"App\" "core\" > NUL
+
+::::::::::::::::::::
+
+:::::: UNPACKING
 
 if exist "App\FFox" rmdir "App\FFox" /s /q
+
+%SZIP% x -aoa TMP\FirefoxSetup_%VERSION%esr.exe -o"App\" "core\" > NUL
+
 rename App\core FFox
+
+::::::::::::::::::::
 
 rmdir "TMP" /s /q
 
-::::::::::::::::::::
+echo Done
 
 :::::: POLICIES
 
