@@ -7,6 +7,7 @@ App/*
 !App/AppInfo/
 !App/DefaultData/
 !App/Utils/
+!.github/
 !.editorconfig
 !.gitignore
 !FFox.exe
