@@ -61,6 +61,14 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); // [FF68
 
   ////////// HOME
 
+    ////////// NEW WINDOWS AND TABS
+
+    user_pref("browser.startup.homepage", "about:blank");
+    user_pref("browser.newtabpage.enabled", false);
+    user_pref("browser.newtab.preload", false);
+
+    //////////
+
     ////////// HOME CONTENT
 
     user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
