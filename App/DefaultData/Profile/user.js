@@ -226,6 +226,13 @@ user_pref("extensions.getAddons.showPane", false); // [HIDDEN PREF]
 /* 0321: disable recommendations in about:addons' Extensions and Themes panes [FF68+] ***/
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
 
+/* 2001: disable WebRTC (Web Real-Time Communication)
+ * Firefox uses mDNS hostname obfuscation on desktop (except Windows7/8) and the
+ * private IP is NEVER exposed, except if required in TRUSTED scenarios; i.e. after
+ * you grant device (microphone or camera) access
+ * [SETUP-HARDEN] Test first. Windows7/8 users only: behind a proxy who never use WebRTC ***/
+user_pref("media.peerconnection.enabled", false);
+
 /* 4501: enable privacy.resistFingerprinting [FF41+]
  * [SETUP-WEB] RFP can cause some website breakage: mainly canvas, use a site exception via the urlbar
  * RFP also has a few side effects: mainly timezone is UTC0, and websites will prefer light theme
